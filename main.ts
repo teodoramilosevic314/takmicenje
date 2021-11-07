@@ -9,6 +9,23 @@ function kradja () {
         basic.clearScreen()
     }
 }
+radio.onReceivedString(function (receivedString) {
+    if (receivedString == sifra) {
+        otkljucano = 1
+    } else {
+        greska += 1
+    }
+})
+let otkljucano = 0
+let sifra = ""
+radio.setGroup(234)
+sifra = ":)"
+let greska = 0
+otkljucano = 0
 basic.forever(function () {
-    kradja()
+    if (otkljucano == 1) {
+        basic.showIcon(IconNames.Happy)
+    } else {
+        kradja()
+    }
 })
